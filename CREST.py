@@ -2,6 +2,8 @@ import urllib
 import pandas as pd
 from datetime import datetime as dt
 
+stations = {'Nagoya' : 'Nagoya', 'Hobart' : 'Hobart', 'SaoMartinho' : 'Sao', 'Kuwait' : 'Kuwait', 'Syowa' : 'Syowa'}
+
 def url_check(url):
     try:
         res = urllib.request.urlopen(url)
@@ -34,7 +36,6 @@ def load(station, year, corrected=False):
         Read data table.
     """
 
-    stations = {'Nagoya' : 'Nagoya', 'Hobart' : 'Hobart', 'SaoMartinho' : 'Sao', 'Kuwait' : 'Kuwait', 'Syowa' : 'Syowa'}
     str_corrected = ['Uncorrect','raw']
     if corrected: str_corrected = ['Correct','copre']
     url = 'http://cosray.shinshu-u.ac.jp/crest/DB/Public/Archives/GMDN/' + str_corrected[0] + '/' + station + '/' + stations[station] + str(year) + '_1hour_' + str_corrected[1] + '+error.txt'
